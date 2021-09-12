@@ -1,0 +1,15 @@
+{
+  "name": "slides",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "watch": "marp --watch --input-dir slides --output build --preview --theme gaia",
+    "build": "marp --input-dir slides --output build --theme gaia"
+  },
+  "author": "uki00a",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.4.0"
+  }
+}
