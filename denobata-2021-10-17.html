@@ -38,11 +38,15 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-theme="gaia" style="--theme:gaia;">
 <h2>Node.js互換モード</h2>
-<p><a href="https://github.com/denoland/deno/issues/12295">denoland/deno#12295</a>のissueで、DenoにNode.jsの互換モードを提供することが提案されています。</p>
-<p>Denoを実行する際に<code>--compat</code>オプションを指定すると、Node.jsの組み込みモジュールの読み込みが有効化されるように提案されています。</p>
+<p>Denoを実行する際に<code>--compat</code>オプションを指定すると、Node.jsの組み込みモジュールの読み込みが有効化されます。</p>
+<pre><code class="language-javascript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { EventEmitter } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;events&quot;</span>;
+
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> EventEmitter();
+  ...
+emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
+</span></span></foreignObject></svg></code></pre>
 <pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">$</span><span class="bash"> deno run --compat main.mjs</span>
 </span></span></foreignObject></svg></code></pre>
-<p>こちらの機能の実装は<a href="https://github.com/denoland/deno/pull/12293">denoland/deno#12293</a>のPRにて進行中です。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-theme="gaia" style="--theme:gaia;">
 <h2>サブテスト</h2>
