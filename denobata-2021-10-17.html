@@ -32,8 +32,8 @@
 <li>サブテスト</li>
 <li><code>URLPattern</code>, <code>Deno.kill</code>, <code>Deno.Process.kill</code>, <code>Deno.resolveDns</code>の安定化</li>
 <li>FFI(Deno.dlopen)で非同期呼び出しがサポート</li>
+<li><code>deno uninstall</code>コマンド</li>
 <li><code>Deno.createHttpClient</code>などで<code>caCerts</code>オプションがサポート</li>
-<li>deno lintで--watchオプションがサポート</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-theme="gaia" style="--theme:gaia;">
@@ -74,7 +74,7 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 <li><code>--compat</code>オプションの実装に合わせて<code>std/node</code>に<code>dns</code>, <code>net</code>, <code>http</code>モジュールが追加</li>
 <li><code>std/fs</code>モジュールで<code>exists</code>と<code>existsSync</code>が非推奨化されました</li>
 <li><code>std/hash</code>が非推奨化されました (代わりにWeb Crypto APIと<code>std/cyrpot</code>の使用を推奨)</li>
-<li><code>std/io</code>のディレクトリ構造などが大幅に変更されました (<code>bufio.ts</code>が<code>buffer.ts</code>へ統合、<code>util.ts</code>が<code>streams.ts</code>へ統合、<code>ioutil.ts</code>が<code>util.ts</code>へリネームなど)</li>
+<li><code>std/io</code>のディレクトリ構造などが大幅に変更されました (<code>util.ts</code>が<code>streams.ts</code>へ統合されて<code>std/streams</code>へ移動、<code>bufio.ts</code>が<code>buffer.ts</code>へ統合、<code>ioutil.ts</code>が<code>util.ts</code>へリネームなど)</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
