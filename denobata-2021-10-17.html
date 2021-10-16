@@ -17,7 +17,7 @@
 <ul>
 <li><a href="https://github.com/denoland/deno/issues/12110">https://github.com/denoland/deno/issues/12110</a></li>
 </ul>
-<p>↑のリリースプランではリリース日は明確にはされていないものの、9月16日のデザインミーティングによると今年の11月を予定されているようです。</p>
+<p>このリリースプランではリリース日は明確にはされていないものの、9月16日のデザインミーティングによると今年の11月を予定されているようです。</p>
 <ul>
 <li><a href="https://github.com/denoland/deno/discussions/12108">https://github.com/denoland/deno/discussions/12108</a></li>
 </ul>
@@ -30,10 +30,10 @@
 <ul>
 <li>Node.js互換モード(<code>--compat</code>)</li>
 <li>サブテスト</li>
-<li><code>URLPattern</code>, <code>Deno.kill</code>, <code>Deno.Process.kill</code>, <code>Deno.resolveDns</code>の安定化</li>
-<li>FFI(Deno.dlopen)で非同期呼び出しがサポート</li>
 <li><code>deno uninstall</code>コマンド</li>
-<li><code>Deno.createHttpClient</code>などで<code>caCerts</code>オプションがサポート</li>
+<li>FFI(<code>Deno.dlopen</code>)で非同期呼び出しや<code>ArrayBuffer</code>の受け取りがサポート</li>
+<li><code>Deno.createHttpClient</code>などのAPIで複数のルート証明書の指定がサポート(<code>caCerts</code>オプション)</li>
+<li><code>URLPattern</code>, <code>Deno.kill</code>, <code>Deno.Process.kill</code>, <code>Deno.resolveDns</code>の安定化</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-theme="gaia" style="--theme:gaia;">
@@ -65,22 +65,58 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
-<h1>deno_std v0.111.0</h1>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="gaia" style="--theme:gaia;">
+<h2><code>deno uninstall</code>コマンド</h2>
+<p><code>deno install</code>でインストールしたコマンドをアンインストールできます。</p>
+<pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">$</span><span class="bash"> deno uninstall udd</span>
+</span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="gaia" style="--theme:gaia;">
-<h2>変更点</h2>
-<ul>
-<li><code>--compat</code>オプションの実装に合わせて<code>std/node</code>に<code>dns</code>, <code>net</code>, <code>http</code>モジュールが追加</li>
-<li><code>std/fs</code>モジュールで<code>exists</code>と<code>existsSync</code>が非推奨化されました</li>
-<li><code>std/hash</code>が非推奨化されました (代わりにWeb Crypto APIと<code>std/cyrpot</code>の使用を推奨)</li>
-<li><code>std/io</code>のディレクトリ構造などが大幅に変更されました (<code>util.ts</code>が<code>streams.ts</code>へ統合されて<code>std/streams</code>へ移動、<code>bufio.ts</code>が<code>buffer.ts</code>へ統合、<code>ioutil.ts</code>が<code>util.ts</code>へリネームなど)</li>
-</ul>
+<h2><code>Deno.createHttpClient</code>などのAPIで複数のルート証明書の指定がサポート(<code>caCerts</code>オプション)</h2>
+<pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">const</span> caCert = <span class="hljs-keyword">await</span> Deno.readTextFile(<span class="hljs-string">&quot;./my_ca_cert.pem&quot;</span>);
+<span class="hljs-keyword">const</span> client = Deno.createHttpClient({
+  <span class="hljs-attr">caCerts</span>: [caCert],
+});
+<span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&quot;https://mydomain.com&quot;</span>, { client });
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> res.text());
+</span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
-<h1>Deno v1.14</h1>
+<h1>deno_std v0.111.0</h1>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="gaia" style="--theme:gaia;">
+<h2>変更点</h2>
+<ul>
+<li><code>--compat</code>オプションの実装に合わせて<code>std/node</code>に<code>dns</code>, <code>net</code>, 及び<code>http</code>モジュールが追加</li>
+<li><code>std/fs</code>モジュールで<code>exists</code>と<code>existsSync</code>が非推奨化されました</li>
+<li><code>std/hash</code>が非推奨化されました (代わりにWeb Crypto APIと<code>std/cyrpot</code>の使用を推奨)</li>
+<li><code>std/io</code>のディレクトリ構造が大幅に変更</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
+<h2><code>std/io</code>のディレクトリ構造が大幅に変更</h2>
+<ul>
+<li><code>std/io/bufio.ts</code>が非推奨化されました (今後は代わりに<code>std/io/buffer.ts</code>から読み込むのを推奨)</li>
+<li><code>std/io/streams.ts</code>が非推奨化されました (今後は代わりに<code>std/streams</code>から読み込むのを推奨)</li>
+<li><code>std/io/ioutil.ts</code>が非推奨化されました (今後は代わりに<code>std/io/util.ts</code>から読み込むのを推奨)</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
+<h2><code>std/io</code>のディレクトリ構造が大幅に変更</h2>
+<ul>
+<li><code>std/io/util.ts</code>で公開されていたAPIが<code>readRange</code>と<code>readRangeSync</code>を除いて<code>std/io/streams.ts</code>へ移動されました
+<ul>
+<li>合わせて、<code>iter</code>及び<code>iterSync</code>がそれぞれ<code>iterateReader</code>及び<code>iterateReaderSync</code>にリネームされています</li>
+</ul>
+</li>
+<li><code>std/io/util.ts</code>の<code>readRange</code>と<code>readRangeSync</code>が<code>std/io/files.ts</code>へ移動されました</li>
+<li><code>std/io/ioutil.ts</code>にあった<code>copyN</code>/<code>readShort</code>/<code>readInt</code>/<code>readLong</code>/<code>sliceLongToBytes</code>が<code>std/io/util.ts</code>へ移動されました</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+<h1>Deno v1.14</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
 <h2>新機能</h2>
 <ul>
 <li><code>deno fmt</code>と<code>deno lint</code>で設定ファイルがサポート</li>
@@ -91,7 +127,7 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 </ul>
 <p>など</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-theme="gaia" style="--theme:gaia;">
 <h2><code>deno fmt</code>と<code>deno lint</code>で設定ファイルがサポート</h2>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>{
   <span class="hljs-attr">&quot;fmt&quot;</span>: {
@@ -107,24 +143,24 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 }
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-theme="gaia" style="--theme:gaia;">
 <h1>lint.deno.landがDeno Deployへ移行</h1>
 <p>deno_lintの公式サイトである<a href="https://lint.deno.land/">lint.deno.land</a>がDeno Deployへ移行されました。</p>
 <p>それに合わせて、内部実装が<a href="https://github.com/lucacasonato/dext.ts">dext.ts</a>+Tailwind CSSから<a href="https://github.com/lucacasonato/fresh">Fresh</a>+<a href="https://github.com/tw-in-js/twind">Twind</a>へ移行されています。</p>
 <p>DenoやDeno Deployなどでフロントエンド開発を行う際に参考になるかもしれないため、興味のある方は<a href="https://github.com/denoland/deno_lint/tree/74b7de1af3593cc673385924ee060112d9b9199a/www">ソースコード</a>も見てみるとよいかもしれません。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>サードパーティモジュールの最新情報</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
 <h1>deno-desktop</h1>
 <ul>
-<li><a href="https://github.com/denosaurs/deno_desktop">https://github.com/denosaurs/deno_desktop</a></li>
+<li><a href="https://github.com/denosaurs/deno_desktop">https://github.com/denosaurs/deno_desktop</a> (Deno本たんのフォークとして開発が進んでいるようです)</li>
 <li><a href="https://scrapbox.io/deno-ja/Deno_Desktop">Scrapbox</a>でhashrockさんが経緯などをまとめられています</li>
 <li>興味ある方はDiscordのdev-desktopチャンネルを見てみるとよいかもしれません</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-theme="gaia" style="--theme:gaia;">
 <h1><a href="https://github.com/denoland/deno.ns">deno.ns</a></h1>
 <p>Denoネームスペースを提供するnpmパッケージ</p>
 <pre><code class="language-javascript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { Deno } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;deno.ns&#x27;</span>;
@@ -133,10 +169,10 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 </span></span></foreignObject></svg></code></pre>
 <p>現在は<a href="https://github.com/denoland">denolandオーガニゼーション</a>配下で開発が行われています</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>Freshのアップデート</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-theme="gaia" style="--theme:gaia;">
 <h2>Freshとは</h2>
 <ul>
 <li>PreactベースのWebフレームワーク</li>
@@ -144,7 +180,7 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 <li>lint.deno.landで使われています</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
 <h2>アップデート</h2>
 <ul>
 <li><code>&lt;Suspense&gt;</code>を使用したストリーミングレンダリングのサポート</li>
