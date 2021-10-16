@@ -155,9 +155,9 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
 <h1>deno-desktop</h1>
 <ul>
-<li><a href="https://github.com/denosaurs/deno_desktop">https://github.com/denosaurs/deno_desktop</a> (Deno本たんのフォークとして開発が進んでいるようです)</li>
+<li><a href="https://github.com/denosaurs/deno_desktop">https://github.com/denosaurs/deno_desktop</a> (Deno本体のフォークとして開発が進んでいるようです)</li>
 <li><a href="https://scrapbox.io/deno-ja/Deno_Desktop">Scrapbox</a>でhashrockさんが経緯などをまとめられています</li>
-<li>興味ある方はDiscordのdev-desktopチャンネルを見てみるとよいかもしれません</li>
+<li>興味ある方はDenoのDiscordのdev-desktopチャンネルを見てみるとよいかもしれません</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-theme="gaia" style="--theme:gaia;">
@@ -183,11 +183,69 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
 <h2>アップデート</h2>
 <ul>
+<li>APIの定義方法が大きく変更されました</li>
 <li><code>&lt;Suspense&gt;</code>を使用したストリーミングレンダリングのサポート</li>
 <li><code>&lt;Head&gt;</code>コンポーネントのサポート</li>
-<li>ページとAPIルートが区別されなくなりました</li>
 <li><code>/static</code>ディレクトリに置いたファイルの静的な配信がサポートされました</li>
 </ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-theme="gaia" style="--theme:gaia;">
+<h2>APIの定義方法が大きく変更</h2>
+<p>今までは<code>pages/api</code>配下のファイルはAPIルートとして扱われていました。</p>
+<p>今後は、APIを定義したいときは、以下のように<code>pages</code>ディレクトリのファイルで<code>handler</code>関数をexportする必要があります。</p>
+<pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { HandlerContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://raw.githubusercontent.com/lucacasonato/fresh/044da545134b91142e215dc349ec37a59e52cd25/server.ts&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> handler = (_ctx: HandlerContext): <span class="hljs-function"><span class="hljs-params">Response</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
+};
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-theme="gaia" style="--theme:gaia;">
+<h2><code>&lt;Suspense&gt;</code>のサポート</h2>
+<pre><code class="language-tsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">/** <span class="hljs-doctag">@jsx </span>h */</span>
+<span class="hljs-keyword">import</span> { h, Suspense, useData } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../deps.ts&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Home</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span>
+      <span class="hljs-attr">fallback</span>=<span class="hljs-string">{(</span>
+        &lt;<span class="hljs-attr">div</span>&gt;</span>
+          Loading...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      )}
+    &gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">SuspendedComponent</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SuspendedComponent</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> message = useData(<span class="hljs-string">&quot;/api/message&quot;</span>, fetchMessage);
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{message}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchMessage</span>(<span class="hljs-params">key: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">string</span>&gt; </span>{
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(key);
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> res.text();
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-theme="gaia" style="--theme:gaia;">
+<h2><code>&lt;Head&gt;</code>コンポーネントのサポート</h2>
+<pre><code class="language-tsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">/** <span class="hljs-doctag">@jsx </span>h */</span>
+<span class="hljs-keyword">import</span> { h, Head } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../deps.ts&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Home</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</span></span></foreignObject></svg></code></pre>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
 </script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.4.0/lib/bespoke.js.LICENSE.txt */
