@@ -50,7 +50,7 @@ emitter.emit(<span class="hljs-string">&quot;foo&quot;</span>);
 <p>まだunstableですが、テストケースを入れ子にできるようになりました</p>
 <pre><code class="language-typescript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.test(<span class="hljs-string">&quot;nested test case&quot;</span>, <span class="hljs-keyword">async</span> (t) =&gt; {
   <span class="hljs-keyword">const</span> success = <span class="hljs-keyword">await</span> t.step(<span class="hljs-string">&quot;step 1&quot;</span>, <span class="hljs-keyword">async</span> (t) =&gt; {
-    <span class="hljs-keyword">let</span> success = <span class="hljs-keyword">await</span> t.step(<span class="hljs-string">&quot;step 1-1&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> success = <span class="hljs-keyword">await</span> t.step(<span class="hljs-string">&quot;step 1-1&quot;</span>, <span class="hljs-function">() =&gt;</span> {
       <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Failed!&quot;</span>);
     });
     <span class="hljs-keyword">if</span> (!success) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Failed!&quot;</span>);
