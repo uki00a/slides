@@ -31,10 +31,15 @@
 <p>Deno DeployのCLIツールである<a href="https://github.com/denoland/deployctl">deployctl</a>がアーカイブされました。</p>
 <p>今後はDeno CLIを使って開発していくようアナウンスされています。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-theme="gaia" style="--theme:gaia;">
+<h1><a href="https://deno.com/blog/slack">Slackの次世代開発プラットフォーム</a></h1>
+<p>Slackが<a href="https://api.slack.com/future">次世代の開発プラットフォーム</a>を発表し、それでDenoが採用されるようです。</p>
+<p><a href="https://api.slack.com/future/tools/cli">CLI</a>や<a href="https://api.slack.com/future/tools#developer-tools__sdk">SDK</a>がDenoに依存しているようです。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>Deno v1.16</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="gaia" style="--theme:gaia;">
 <h2>React 17のJSX Transformのサポート</h2>
 <p><code>.jsx</code>または<code>.tsx</code>ファイル中で<code>@jsxImportSource</code>を使うことで有効化されます。</p>
 <pre><code class="language-jsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">/** <span class="hljs-doctag">@jsxImportSource </span>https://esm.sh/preact@10.5.15 */</span>
@@ -46,7 +51,7 @@
 }
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="gaia" style="--theme:gaia;">
 <p>また、<code>--config</code>オプションで指定する設定ファイルで有効化することも可能です。</p>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>{
   <span class="hljs-attr">&quot;compilerOptions&quot;</span>: {
@@ -56,7 +61,7 @@
 }
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-theme="gaia" style="--theme:gaia;">
 <h2><code>--location</code>を指定せずに<code>localStorage</code>が利用できるようになりました。</h2>
 <pre><code class="language-js"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&quot;foo&quot;</span>);
 </span></span></foreignObject></svg></code></pre>
@@ -70,14 +75,14 @@
 <span class="hljs-meta">$</span><span class="bash"> deno run main.ts</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="gaia" style="--theme:gaia;">
 <h2><code>fetch</code>でローカルファイルのダウンロードがサポート</h2>
 <p>利用するには<code>--allow-read</code>パーミッションが必要です。</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&quot;file:///home/uki00a/.vimrc&quot;</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> res.text());
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
 <h2>新しいシグナルAPI (unstable)</h2>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">const</span> signalListener = <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-comment">// ...</span>
@@ -87,7 +92,7 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 </span></span></foreignObject></svg></code></pre>
 <p>この変更に合わせて、既存の<code>Deno.signal</code>は削除されています。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
 <h2>テストケースごとのパーミッション指定が安定化</h2>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.test({
   <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;This should fail&quot;</span>,
@@ -100,8 +105,8 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
-<h2>Node.js互換モードの機能向上</h2>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-theme="gaia" style="--theme:gaia;">
+<h2>Node.js互換モードの機能向上(<code>--compat</code>)</h2>
 <p><code>https:</code>や<code>blob:</code>インポートがサポートされました。 (<code>.mjs</code>ファイル中や<code>package.json</code>で<code>&quot;type&quot;: &quot;module&quot;</code>が指定された際に有効化されます)</p>
 <pre><code class="language-js"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { distinct } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.114.0/collections/distinct.ts&quot;</span>;
 <span class="hljs-keyword">import</span> { EventEmitter } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;node:events&quot;</span>;
@@ -111,21 +116,21 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 </span></span></foreignObject></svg></code></pre>
 <p>また、Import mapsとの統合もサポートされています。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
 <h2><code>Deno.startTls</code>が安定化</h2>
 <p><code>Deno.startTls</code>が安定化され<code>--unstable</code>フラグなしでも利用できるようになりました。</p>
 <p>これにより、<a href="https://github.com/denodrivers/postgres">deno-postgres</a>が<code>--unstable</code>に依存しなくなりました。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-theme="gaia" style="--theme:gaia;">
 <h2>シンボリックリンク関連のAPI</h2>
 <p><code>Deno.symlink</code>などのシンボリック関連のAPIが<code>--allow-write</code>に加えて<code>--allow-read</code>パーミッションを要求するように変更されました。</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">await</span> Deno.symlink(oldpath, newpath);
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>deno_std v0.114.0</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-theme="gaia" style="--theme:gaia;">
 <h2><code>http/server</code> (part 1)</h2>
 <p><code>serveListener()</code>関数が追加されました。使用法はv0.113.0までの<code>serve()</code>関数と同様です。</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { serveListener } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.114.0/http/server.ts&quot;</span>;
@@ -136,7 +141,7 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
 <h2><code>http/server</code> (part 2)</h2>
 <p>また、既存の<code>serve()</code>の使用法が変更されています。こちらは<code>Deno.Listener</code>を渡す必要がありません。</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { serve } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.114.0/http/server.ts&quot;</span>;
@@ -146,7 +151,7 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 }, { <span class="hljs-attr">addr</span>: <span class="hljs-string">&quot;:8000&quot;</span> });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-theme="gaia" style="--theme:gaia;">
 <h2><code>http/server</code> (part 3)</h2>
 <p>また、下記関数が非推奨化されています。</p>
 <ul>
@@ -154,13 +159,13 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 <li><code>listenAndServeTls</code> (今後は<code>serveTls</code>の使用が推奨されます)</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>その他のアップデートなど</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h1>Freshのアップデート</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://github.com/lucacasonato/fresh/pull/74">Middlewareサポートが追加</a></h2>
 <p>利用する際はpagesディレクトリ配下に<code>_middleware.ts</code>ファイルを用意し、<code>handler</code>関数を<code>export</code>する必要があります。</p>
 <pre><code class="language-jsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">req: Request, handle: () =&gt; <span class="hljs-built_in">Promise</span>&lt;Response&gt;</span>) </span>{
@@ -172,7 +177,7 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 }
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://github.com/lucacasonato/fresh/pull/72">CSPサポート</a></h2>
 <pre><code class="language-jsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> type { PageConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../deps.ts&quot;</span>;
 
@@ -185,7 +190,7 @@ Deno.removeSignalListener(<span class="hljs-string">&quot;SIGTERM&quot;</span>, 
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-theme="gaia" style="--theme:gaia;">
 <h1>2021年のDeno Advent Calendarが公開</h1>
 <p>Qiitaで2021年のDeno Advent Calendarが公開されました。</p>
 <ul>
