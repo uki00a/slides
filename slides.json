@@ -1,19 +1,19 @@
 {
   "slides": [
     {
-      "path": "slides/denobata-2021-09-19",
+      "path": "/slides/denobata-2021-09-19",
       "title": "Denoばた会議 Monthly 第1回"
     },
     {
-      "path": "slides/denobata-2021-10-17",
+      "path": "/slides/denobata-2021-10-17",
       "title": "Denoばた会議 Monthly 第2回"
     },
     {
-      "path": "slides/denobata-2021-11-21",
+      "path": "/slides/denobata-2021-11-21",
       "title": "Denoばた会議 Monthly 第3回"
     },
     {
-      "path": "slides/denobata-2021-12-19",
+      "path": "/slides/denobata-2021-12-19",
       "title": "Denoばた会議 Monthly 第4回"
     }
   ]
