@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+import fs from "fs/promises";
+import path from "path";
+
+async function main() {
+  const { slides } = JSON.parse(
+    await fs.readFile("slides.json", { encoding: "utf-8" }),
+  );
+  const dirname = new URL(".", import.meta.url).pathname;
+  const distDir = path.join(dirname, "build");
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,18 +23,20 @@
 <body>
   <h1>スライド</h1>
   <ul>
-    <li>
-      <a href="https://uki00a.github.io/slides/denobata-2021-09-19">Denoばた会議 Monthly 第1回</a>
-    </li>
-    <li>
-      <a href="https://uki00a.github.io/slides/denobata-2021-10-17">Denoばた会議 Monthly 第2回</a>
-    </li>
-    <li>
-      <a href="https://uki00a.github.io/slides/denobata-2021-11-21">Denoばた会議 Monthly 第3回</a>
-    </li>
-    <li>
-      <a href="https://uki00a.github.io/slides/denobata-2021-12-19">Denoばた会議 Monthly 第4回</a>
-    </li>
+    ${
+    slides.map(({ path, title }) => (
+      `<li>
+          <a href="https://uki00a.github.io${path}">${title}</a>
+        </li>`
+    ))
+  }
   </ul>
 </body>
-</html>
+</html>`;
+  await fs.writeFile(path.join(distDir, "index.html"), html);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

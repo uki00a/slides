@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: |
         yarn build
-        cp index.html build
+        node build_index.js
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.event_name == 'push' }}
