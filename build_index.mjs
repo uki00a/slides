@@ -21,16 +21,14 @@ async function main() {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
 </head>
 <body>
-  <h1>スライド</h1>
-  <ul>
-    ${
+<h1>スライド</h1>
+<ul>
+${
     slides.map(({ path, title }) => (
-      `<li>
-          <a href="https://uki00a.github.io${path}">${title}</a>
-        </li>`
-    ))
+      `<li><a href="https://uki00a.github.io${path}">${title}</a></li>`
+    )).join("\n")
   }
-  </ul>
+</ul>
 </body>
 </html>`;
   await fs.writeFile(path.join(distDir, "index.html"), html);
