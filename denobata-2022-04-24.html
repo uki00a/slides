@@ -50,6 +50,22 @@
 </span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-theme="gaia" style="--theme:gaia;">
+<h3><code>deno lsp</code>の改善</h3>
+<ul>
+<li><code>deno.json(c)</code>で定義されたタスクの実行をサポート
+<ul>
+<li>vscode-denoを入れておけば、<code>Tasks: Run Task</code>でタスクを実行できます</li>
+</ul>
+</li>
+<li>ワークスペース内の特定ディレクトリでのみLSPを有効化できるようになりました (<code>&quot;enablePaths&quot;</code>オプション)</li>
+<li>vscodeの<a href="https://code.visualstudio.com/api/extension-guides/testing">Testing API</a>がサポート
+<ul>
+<li><code>Testing: Focus on Test Explorer View</code>コマンドを実行すると、テストケースの一覧を表示できます</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="gaia" style="--theme:gaia;">
 <h3><code>deno test</code>の改善</h3>
 <p><code>TestContext</code>オブジェクトにテストケースに関するメタデータが追加 (<code>name</code>, <code>origin</code>, 及び<code>parent</code>プロパティ)</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.test(<span class="hljs-string">&quot;math&quot;</span>, <span class="hljs-keyword">async</span> (t) =&gt; {
@@ -63,7 +79,7 @@
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="gaia" style="--theme:gaia;">
 <p><strong>テストレポートの改善</strong></p>
 <pre><code class="language-js"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.test(<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-built_in">console</span>.log({ <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;foo&quot;</span> });
@@ -79,12 +95,12 @@ baz
 ----- output end -----
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-theme="gaia" style="--theme:gaia;">
 <h3><code>deno fmt</code>と<code>deno lint</code>の大幅な高速化</h3>
 <p><code>deno fmt</code>と<code>deno lint</code>でインクリメンタルキャッシュがサポートされました。</p>
 <p>これらのコマンドの実行結果をキャッシュすることで、大幅な高速化が見込まれるようです。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="gaia" style="--theme:gaia;">
 <h3><code>deno bench</code>の改善</h3>
 <p><code>n</code>オプションと<code>warmup</code>オプションが削除されています。</p>
 <pre><code class="language-js"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.bench(<span class="hljs-string">&quot;URLPattern&quot;</span>, <span class="hljs-function">() =&gt;</span> {
@@ -94,7 +110,7 @@ baz
 </span></span></foreignObject></svg></code></pre>
 <p>今後は、Deno本体が信頼のある結果を得られるまで繰り返しベンチマークを実行してくれます。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
 <p><strong>ベンチマークのグルーピング</strong></p>
 <pre><code class="language-js"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Deno.bench({ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attr">group</span>: <span class="hljs-string">&quot;math&quot;</span>, <span class="hljs-attr">baseline</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">fn</span>: <span class="hljs-function">() =&gt;</span> add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) });
 Deno.bench({ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;sum&quot;</span>, <span class="hljs-attr">group</span>: <span class="hljs-string">&quot;math&quot;</span>, <span class="hljs-attr">fn</span>: <span class="hljs-function">() =&gt;</span> sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>) });
@@ -109,7 +125,7 @@ summary
    1.14x times faster than sum
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
 <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/reportError">reportError()</a>のサポート</h3>
 <p>Uncaught exceptionを明示的に発生させることができます。</p>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>addEventListener(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
@@ -119,7 +135,7 @@ summary
 reportError(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;foo&quot;</span>));
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-theme="gaia" style="--theme:gaia;">
 <h3><code>deno repl</code>の改善</h3>
 <p><code>--eval-file</code>オプションが追加され、REPLの起動前に読み込みたいファイルを指定できるようになりました。</p>
 <pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">$</span><span class="bash"> deno repl --eval-file=sum.js</span>
@@ -130,21 +146,21 @@ exit using ctrl+d or close()
 </span></span></foreignObject></svg></code></pre>
 <p>その他にも、<code>clear()</code>関数がサポートされています。(挙動は<code>console.clear()</code>と同等)</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
 <h3><code>Deno.Listener</code>に<code>ref</code>と<code>unref</code>メソッドが追加 (unstable)</h3>
 <p><code>unref()</code>が呼ばれた<code>Listener</code>はプロセスの終了をブロックしなくなります (タイマに<code>Deno.unrefTimer</code>を呼んだときと同様の挙動をします)</p>
 <p><a href="https://deno.land/std@0.136.0/node/net.ts">deno_std/node/net</a>での<code>Server.ref()</code>や<code>Server.unref()</code>の実装で利用されています。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-theme="gaia" style="--theme:gaia;">
 <h3><code>DENO_NO_PROMPT</code>環境変数のサポート</h3>
 <p>この環境変数を設定すると、<a href="https://deno.com/blog/v1.19">Deno v1.19で有効化されたプロンプトの挙動</a>を無効化できるようになりました。(<code>--no-prompt</code>を指定したときと同様の挙動です)</p>
 <pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">$</span><span class="bash"> DENO_NO_PROMPT=1 deno run main.ts</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="lead" data-theme="gaia" class="lead" style="--class:lead;--theme:gaia;">
 <h2>deno_stdのアップデート</h2>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-theme="gaia" style="--theme:gaia;">
 <h3><code>testing/mock</code></h3>
 <pre><code class="language-tsx"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { assertSpyCall, assertSpyCalls, spy } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/mock.ts&quot;</span>;
 
@@ -165,7 +181,7 @@ assertSpyCall(addSpy, <span class="hljs-number">1</span>, {
 assertSpyCalls(addSpy, <span class="hljs-number">2</span>); <span class="hljs-comment">// =&gt; OK</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
 <h3><code>testing/bdd</code></h3>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { assertEquals } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/asserts.ts&quot;</span>;
 <span class="hljs-keyword">import</span> { describe, it } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/bdd.ts&quot;</span>;
@@ -182,7 +198,7 @@ describe(<span class="hljs-string">&quot;sum&quot;</span>, <span class="hljs-fun
 </span></span></foreignObject></svg></code></pre>
 <p>定義したテストケースは<code>deno test</code>で実行できます。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-theme="gaia" style="--theme:gaia;">
 <h3><code>testing/time</code></h3>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { afterEach, beforeEach, describe, it } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/bdd.ts&quot;</span>
 <span class="hljs-keyword">import</span> { assertSpyCalls, spy } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/mock.ts&quot;</span>;
@@ -212,7 +228,7 @@ describe(<span class="hljs-string">&quot;FakeTime&quot;</span>, <span class="hlj
 });
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-theme="gaia" style="--theme:gaia;">
 <h3><code>testing/snapshot</code></h3>
 <pre><code class="language-ts"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> { assertSnapshot } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https://deno.land/std@0.136.0/testing/snapshot.ts&quot;</span>
 
@@ -226,17 +242,17 @@ Deno.test(<span class="hljs-string">&quot;doSomething&quot;</span>, <span class=
 <span class="hljs-meta">$</span><span class="bash"> deno <span class="hljs-built_in">test</span> --allow-read --allow-write tests/some_test.js -- --update</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://deno.com/blog/supabase-functions-on-deno-deploy">Supabase Functions</a></h2>
 <p><a href="https://supabase.com/">Supabase</a>でSupabase FunctionsというFaaSが利用できるようになりました。</p>
 <p>Supabase FunctionsはDeno Deployをベースにしており、TypeScriptなどを利用してコードを記述できます。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://deno.com/blog/netlify-edge-functions-on-deno-deploy">Netlify Edge Functions (public beta)</a></h2>
 <p>NetlifyのEdgeネットワーク上でJavaScriptやTypeScript関数を実行することができます</p>
 <p>現在、<a href="https://github.com/netlify/remix-edge-template">Remix</a>や<a href="https://astro.build/blog/netlify-edge-functions/">Astro</a>, <a href="https://docs.netlify.com/integrations/frameworks/nuxt/#edge-functions">Nuxt3</a>など様々なフレームワークでNetlify Edge Functionsのサポートが提供されています</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://github.com/alephjs/aleph.js/releases/tag/1.0.0-alpha.1">Aleph.js v1 alpha</a></h2>
 <ul>
 <li><a href="https://github.com/alephjs/alephjs.org/pull/58">Deno Deployのサポート</a></li>
@@ -246,7 +262,7 @@ Deno.test(<span class="hljs-string">&quot;doSomething&quot;</span>, <span class=
 <li><code>ts</code>/<code>jsx</code>/<code>tsx</code>のオンデマンドでの変換</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://github.com/exhibitionist-digital/ultra/releases/tag/v0.8.0">Ultra v0.8.0</a></h2>
 <ul>
 <li>React v18のサポート</li>
@@ -257,7 +273,7 @@ Deno.test(<span class="hljs-string">&quot;doSomething&quot;</span>, <span class=
 </ul>
 <p>など、様々な変更が実施されています。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-theme="gaia" style="--theme:gaia;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-theme="gaia" style="--theme:gaia;">
 <h2><a href="https://github.com/stripe/stripe-node/issues/997#issuecomment-1104276450">stripe-nodeパッケージでのDenoサポートについて</a></h2>
 <p><a href="https://github.com/stripe/stripe-node">stripe-node</a>パッケージがDenoでも動作するようになったようです。</p>
 <p><a href="https://twitter.com/aiotter_tech/status/1517335820633444352">aiotterさん</a>に情報提供いただきました<img class="emoji" draggable="false" alt="🙏" src="https://twemoji.maxcdn.com/2/svg/1f64f.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="🙏" src="https://twemoji.maxcdn.com/2/svg/1f64f.svg" data-marp-twemoji=""/></p>
