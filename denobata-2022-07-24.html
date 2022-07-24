@@ -121,7 +121,10 @@ addEventListener(<span class="hljs-string">&quot;beforeunload&quot;</span>, <spa
 <p>テストケースを並列実行できます。</p>
 <pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ deno test --parallel
 </span></span></foreignObject></svg></code></pre>
-<p>既存の<code>--jobs</code>オプションは非推奨化されています。</p>
+<p><code>DENO_JOBS</code>環境変数で並列数を調整できます。</p>
+<pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">$</span><span class="bash"> DENO_JOBS=4 deno <span class="hljs-built_in">test</span> --parallel</span>
+</span></span></foreignObject></svg></code></pre>
+<p><strong>このオプションの追加により、既存の<code>--jobs</code>オプションは非推奨化されています。</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="gaia" style="--theme:gaia;">
 <h3>その他の変更点</h3>
