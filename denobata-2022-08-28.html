@@ -17,12 +17,12 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-theme="gaia" style="--theme:gaia;">
 <h3>npmパッケージのサポート</h3>
 <p><code>npm:&lt;パッケージ名&gt;</code>でnpmパッケージを<code>import</code>できます。</p>
-<pre><code class="language-typescript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;npm:express@4.18.1&quot;</span>
+<pre><code class="language-typescript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;npm:express@4.18.1&quot;</span>;
 
-<span class="hljs-keyword">const</span> app = express()
+<span class="hljs-keyword">const</span> app = express();
 app.get(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
   res.send(<span class="hljs-string">&quot;Hello&quot;</span>);
-})
+});
 
 app.listen(<span class="hljs-number">3000</span>);
 </span></span></foreignObject></svg></code></pre>
