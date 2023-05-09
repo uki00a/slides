@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "watch": "marp --watch --preview",
-    "build": "marp"
+    "watch": "marp --watch --preview --html",
+    "build": "marp --html"
   },
   "author": "uki00a",
   "license": "MIT",
