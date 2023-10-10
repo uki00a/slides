@@ -20,6 +20,7 @@ jobs:
       run: |
         yarn build
         node build_index.mjs
+        cp -R slides/images build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.event_name == 'push' }}
