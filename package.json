@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "marp --watch --preview --html",
-    "build": "marp --html"
+    "build": "marp --html",
+    "watch:file": "marp --watch --html --preview --no-config ./build --theme gaia --"
   },
   "author": "uki00a",
   "license": "MIT",
